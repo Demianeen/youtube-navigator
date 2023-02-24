@@ -1,0 +1,21 @@
+{% extends 'summaryGen/base.html' %}
+{% load static %}
+{% block body_block %}
+
+    {% if registered %}
+      <h1 class="fw-bold">Thank you for registering!</h1>
+      <p><a href="{% url 'summaryGen:user_login'%}">Log in</a></p>
+    {% else %}
+      <h1 class="display-2">Welcome</h1>
+      <h3 class="">Create an account</h3>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="fs-4">
+          {{ user_form.as_p }}
+        </div>
+        <input class="btn btn-light mb-2" type="submit" value="Register" name="">
+      </form>
+      <p>Already have an account? <a href="{% url 'summaryGen:user_login'%}">Log in</a></p>
+    {% endif %}
+{% endblock %}

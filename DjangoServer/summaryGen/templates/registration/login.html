@@ -1,0 +1,23 @@
+{% extends 'summaryGen/base.html' %}
+{% block body_block %}
+
+
+<div class="container-fluid">
+    <h1>Login</h1>
+    <form action="{% url 'summaryGen:user_login' %}" method="post">
+        {% csrf_token %}
+        <label class="login-label" for="email">Email:</label>
+        <input class='form-control' type="text" name="email" placeholder="Enter Email">
+
+        <label class="login-label" for="password">Password:</label>
+        <input class='form-control' type="password" name="password">
+
+        <input class='btn btn-light my-2' type="submit" name="" value="Login">
+    </form>
+    <p>Or enter here to <a href="{% url 'summaryGen:register'%}">create an account</a></p>
+
+</div>
+
+
+
+{% endblock %}

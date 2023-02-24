@@ -1,0 +1,46 @@
+{
+  "name": "Youtube navigator (GPT-3 summaries!)",
+  "short_name": "Youtube navigator",
+  "manifest_version": 3,
+  "version": "1.2",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "browser",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
+  "icons": {
+    "16": "logo16.png",
+    "32": "logo32.png",
+    "48": "logo48.png",
+    "128": "logo128.png",
+    "192": "logo192.png"
+  },
+  "scope": "/",
+  "start_url": "/",
+  "permissions": [
+    "tab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "./background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://youtube.com/*",
+        "https://www.youtube.com/*",
+        "https://youtu.be/*",
+        "https://www.youtu.be/*",
+        "https://www.youtube-nocookie.com/*",
+        "https://youtube-nocookie.com/*",
+        "https://www.youtube.com/embed/*",
+        "https://youtube.com/embed/*"
+      ],
+      "js": [
+        "./content.js"
+      ]
+    }
+  ]
+}
